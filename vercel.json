@@ -23,8 +23,32 @@
       "dest": "server/src/index.js"
     },
     {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/favicon.svg",
+      "dest": "/favicon.svg"
+    },
+    {
+      "src": "/logo192.png",
+      "dest": "/logo192.png"
+    },
+    {
+      "src": "/logo512.png",
+      "dest": "/logo512.png"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "client/$1"
+      "dest": "/$1"
     }
   ],
   "env": {
