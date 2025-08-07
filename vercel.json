@@ -27,6 +27,15 @@
       "dest": "server/src/index.js"
     },
     {
+      "src": "/manifest.json",
+      "dest": "/manifest.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
