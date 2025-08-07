@@ -1,0 +1,127 @@
+{
+  "id": "snackgpt",
+  "name": "SnackGPT",
+  "provider": "SnackGPT Team",
+  "contact": "snackgpt@example.com",
+  "description": "Fun AI recipe generator that responds to fridge items, mood, and weather using the MCP protocol. Features Eliza AI agent for intelligent context analysis and enhanced recipe generation with different cooking styles like Shakespeare, Gordon Ramsay, or 5-year-old voice.",
+  "tags": ["Standard", "Food", "AI", "Fun", "Eliza", "Agent"],
+  "entry_point": "https://your-deployed-server.com/mcp",
+  "source_url": "https://github.com/your-username/snackgpt",
+  "tools": [
+    {
+      "name": "suggest_dish",
+      "description": "Generates a creative dish based on user ingredients, mood, and weather using Eliza AI agent for context analysis and enhanced prompt engineering.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "ingredients": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "List of available ingredients"
+          },
+          "mood": {
+            "type": "string",
+            "enum": ["happy", "tired", "sad", "excited", "stressed"],
+            "description": "User's current mood"
+          },
+          "weather": {
+            "type": "string",
+            "enum": ["sunny", "rainy", "cloudy", "snowy", "windy"],
+            "description": "Current weather conditions"
+          },
+          "style": {
+            "type": "string",
+            "enum": ["shakespeare", "gordon_ramsay", "five_year_old"],
+            "description": "Cooking style voice"
+          }
+        },
+        "required": ["ingredients"]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "dish_name": {
+            "type": "string",
+            "description": "Creative name for the generated dish"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "List of ingredients for the recipe"
+          },
+          "instructions": {
+            "type": "string",
+            "description": "Step-by-step cooking instructions"
+          },
+          "style_description": {
+            "type": "string",
+            "description": "Fun description in the specified style voice"
+          },
+          "eliza_enhanced": {
+            "type": "boolean",
+            "description": "Whether the recipe was enhanced by Eliza agent"
+          },
+          "context_analysis": {
+            "type": "object",
+            "properties": {
+              "mood_adapted": { "type": "string" },
+              "weather_considered": { "type": "string" },
+              "style_applied": { "type": "string" }
+            },
+            "description": "Eliza agent's context analysis"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "mcp_version": "2024-11-05",
+    "features": [
+      "AI-powered recipe generation",
+      "Eliza AI agent for context analysis",
+      "Intelligent prompt engineering",
+      "Mood-based cooking suggestions",
+      "Weather-aware recipes",
+      "Multiple cooking style voices",
+      "Beautiful React UI with animations",
+      "MCP-compliant JSON-RPC 2.0 protocol",
+      "Comput3 AI backend integration",
+      "Real-time context adaptation"
+    ],
+    "eliza_agent": {
+      "name": "Eliza",
+      "version": "1.0.0",
+      "capabilities": [
+        "recipe_generation",
+        "prompt_engineering", 
+        "context_analysis",
+        "mood_analysis",
+        "weather_adaptation"
+      ],
+      "description": "Eliza is an AI agent that acts as an intelligent intermediary between the MCP server and Comput3 AI. It analyzes user context (mood, weather, style), enhances prompts, and post-processes responses for better recipe generation."
+    },
+    "examples": [
+      {
+        "input": {
+          "ingredients": ["banana", "noodles"],
+          "mood": "tired",
+          "weather": "rainy",
+          "style": "five_year_old"
+        },
+        "output": {
+          "dish_name": "Cozy Banana Noodle Comfort",
+          "ingredients": ["banana", "noodles", "peanut butter", "honey", "cinnamon"],
+          "instructions": "Step 1. Boil noodles until soft and drain\nStep 2. Smash banana into a mush\nStep 3. Mix with peanut butter and honey\nStep 4. Add to noodles and stir gently\nStep 5. Sprinkle with cinnamon and enjoy your cozy comfort food!",
+          "style_description": "This is the most yummy tired food ever! It's like magic in your tummy and makes you want to dance around the kitchen!",
+          "eliza_enhanced": true,
+          "context_analysis": {
+            "mood_adapted": "tired",
+            "weather_considered": "rainy", 
+            "style_applied": "five_year_old"
+          }
+        }
+      }
+    ]
+  }
+}
