@@ -3,10 +3,10 @@
   "name": "SnackGPT",
   "provider": "SnackGPT Team",
   "contact": "snackgpt@example.com",
-  "description": "Fun AI recipe generator that responds to fridge items, mood, and weather using the MCP protocol. Features Eliza AI agent for intelligent context analysis and enhanced recipe generation with different cooking styles like Shakespeare, Gordon Ramsay, or 5-year-old voice.",
-  "tags": ["Standard", "Food", "AI", "Fun", "Eliza", "Agent"],
-  "entry_point": "https://your-deployed-server.com/mcp",
-  "source_url": "https://github.com/your-username/snackgpt",
+  "description": "AI-powered recipe generator that creates personalized recipes based on available ingredients, user mood, and weather conditions. Features Eliza AI agent for intelligent context analysis and enhanced recipe generation with multiple cooking style voices (Shakespeare, Gordon Ramsay, 5-year-old). Implements MCP protocol with JSON-RPC 2.0 over HTTP+SSE for real-time communication.",
+  "tags": ["Standard", "Food", "AI", "Fun", "Eliza", "Agent", "Recipe", "Cooking"],
+  "entry_point": "https://snackgpt-mcp-server.onrender.com/mcp",
+  "source_url": "https://github.com/snackgpt-team/snackgpt",
   "tools": [
     {
       "name": "suggest_dish",
@@ -17,22 +17,26 @@
           "ingredients": {
             "type": "array",
             "items": { "type": "string" },
-            "description": "List of available ingredients"
+            "description": "List of available ingredients",
+            "minItems": 1
           },
           "mood": {
             "type": "string",
             "enum": ["happy", "tired", "sad", "excited", "stressed"],
-            "description": "User's current mood"
+            "description": "User's current mood",
+            "default": "happy"
           },
           "weather": {
             "type": "string",
             "enum": ["sunny", "rainy", "cloudy", "snowy", "windy"],
-            "description": "Current weather conditions"
+            "description": "Current weather conditions",
+            "default": "sunny"
           },
           "style": {
             "type": "string",
             "enum": ["shakespeare", "gordon_ramsay", "five_year_old"],
-            "description": "Cooking style voice"
+            "description": "Cooking style voice",
+            "default": "five_year_old"
           }
         },
         "required": ["ingredients"]
@@ -70,7 +74,8 @@
             },
             "description": "Eliza agent's context analysis"
           }
-        }
+        },
+        "required": ["dish_name", "ingredients", "instructions", "style_description"]
       }
     }
   ],
@@ -87,7 +92,10 @@
       "Beautiful React UI with animations",
       "MCP-compliant JSON-RPC 2.0 protocol",
       "Comput3 AI backend integration",
-      "Real-time context adaptation"
+      "Real-time context adaptation",
+      "Rate limiting and security",
+      "Comprehensive error handling",
+      "Health monitoring endpoints"
     ],
     "eliza_agent": {
       "name": "Eliza",
@@ -100,6 +108,20 @@
         "weather_adaptation"
       ],
       "description": "Eliza is an AI agent that acts as an intelligent intermediary between the MCP server and Comput3 AI. It analyzes user context (mood, weather, style), enhances prompts, and post-processes responses for better recipe generation."
+    },
+    "security": {
+      "rate_limiting": "100 requests per 15 minutes per IP",
+      "authentication": "API key support via X-API-Key header",
+      "cors": "Configurable CORS with secure defaults",
+      "helmet": "Security headers enabled",
+      "validation": "Comprehensive input validation"
+    },
+    "deployment": {
+      "frontend": "Vercel",
+      "backend": "Render",
+      "database": "None (stateless)",
+      "monitoring": "Health check endpoint",
+      "logging": "Structured logging with morgan"
     },
     "examples": [
       {
@@ -119,6 +141,26 @@
             "mood_adapted": "tired",
             "weather_considered": "rainy", 
             "style_applied": "five_year_old"
+          }
+        }
+      },
+      {
+        "input": {
+          "ingredients": ["chicken", "rice", "tomato"],
+          "mood": "happy",
+          "weather": "sunny",
+          "style": "shakespeare"
+        },
+        "output": {
+          "dish_name": "Merry Sunshine Chicken Delight",
+          "ingredients": ["chicken", "rice", "tomato", "olive oil", "herbs", "garlic"],
+          "instructions": "Step 1. Thou shalt begin by seasoning the chicken with herbs and garlic, verily, to taste.\nStep 2. In a pan, heat olive oil over medium heat, then add the chicken and cook until golden brown.\nStep 3. Add rice and tomatoes to the pan, stirring gently that all ingredients doth mingle.\nStep 4. Cover and simmer until rice is tender and chicken is cooked through.\nStep 5. Serve hot and enjoy this merry feast!",
+          "style_description": "O, fair cook, this dish doth bring joy to the heart and warmth to the soul! The golden chicken, the fluffy rice, and the sweet tomatoes create a symphony of flavors that shall delight thy senses on this sunny day!",
+          "eliza_enhanced": true,
+          "context_analysis": {
+            "mood_adapted": "happy",
+            "weather_considered": "sunny",
+            "style_applied": "shakespeare"
           }
         }
       }

@@ -1,57 +1,218 @@
 # 🍽️ SnackGPT - AI-Powered Recipe Generator
 
-**Fun AI recipe generator that responds to fridge items, mood, and weather using the MCP protocol. Features Eliza AI agent for intelligent context analysis and enhanced recipe generation with different cooking styles like Shakespeare, Gordon Ramsay, or 5-year-old voice.**
+**MCP Hackathon Submission - Standard Category**
 
-[![MCP Protocol](https://img.shields.io/badge/MCP-Protocol-blue)](https://modelcontextprotocol.io/)
-[![Eliza AI Agent](https://img.shields.io/badge/Eliza-AI%20Agent-purple)](https://github.com/your-username/snackgpt)
-[![Comput3 AI](https://img.shields.io/badge/Comput3-AI-green)](https://comput3.ai/)
-[![React](https://img.shields.io/badge/React-18.2.0-blue)](https://reactjs.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
+## 📞 Contact Information
+- **Primary Contact**: Kiran Murthy K S
+- **Telegram Handle**: @kiranmurthyks
+- **Team Name**: delta
+- **Project Title**: SnackGPT
 
-## ✨ Features
+## 🎯 One-Sentence Elevator Pitch
+**SnackGPT**: An AI-powered recipe generator that whips up wild dishes based on your fridge, mood, and weather—with a hilarious twist!
 
-### 🎯 Core Features
-- **AI-Powered Recipe Generation** - Create unique recipes from your available ingredients
-- **Eliza AI Agent Integration** - Intelligent context analysis and enhanced prompt engineering
-- **Mood-Based Cooking** - Recipes adapt to your current emotional state (happy, tired, sad, excited, stressed)
-- **Weather-Aware Recipes** - Cooking suggestions based on weather conditions (sunny, rainy, cloudy, snowy, windy)
-- **Multiple Cooking Styles** - Choose from Shakespeare, Gordon Ramsay, or 5-year-old voice
-- **MCP-Compliant Protocol** - Full JSON-RPC 2.0 implementation for AI tool communication
+## 📖 Detailed Project Description
 
-### 🆕 New Features (Latest Update)
+### Project Title: 🥗 SnackGPT – The AI Mood & Fridge-Based Recipe Generator
 
-#### 🕒 **Cooking Timer & Instructions**
-- **Step-by-step timer** with automatic time detection from instructions
-- **Progress tracking** with visual progress bars
-- **Step completion** with checkmarks and animations
-- **Skip and reset** functionality for flexible cooking
-- **Voice-guided cooking** with real-time feedback
+**Description:**
 
-#### 🍎 **Nutrition Information**
-- **Calorie estimation** with visual indicators (Low/Medium/High)
-- **Macronutrient breakdown** (Protein, Carbs, Fat, Fiber)
-- **Nutrition grade** (A, B, C, D) based on recipe healthiness
-- **Daily value percentages** for each nutrient
-- **Serving size adjustment** with automatic recalculation
+SnackGPT is a fun, interactive AI-powered web app that generates creative, often hilarious recipes based on what users have in their fridge or how they're feeling. By leveraging ElizaOS and Comput3's LLaMA3-based MCP tooling, SnackGPT takes simple inputs like ingredients, mood, and weather—and transforms them into unique dishes like "Banana Blaster Noodles" or "Melancholy Rainy Day Toast."
 
-#### 📚 **Recipe History & Favorites**
-- **Persistent storage** using localStorage
-- **Recipe history** with timestamps and metadata
-- **Favorite recipes** with heart icons and filtering
-- **Quick access** to previous recipes
-- **Delete and manage** your recipe collection
+Users can toggle between different narrative styles—such as Shakespearean drama, Gordon Ramsay's fiery sarcasm, or the whimsical logic of a 5-year-old—making each recipe a personalized performance. Whether you're cooking with scraps or craving food that matches your vibes, SnackGPT adds humor, utility, and AI magic to your kitchen experience.
 
-#### 📊 **Enhanced Recipe Display**
-- **Difficulty level** assessment (Easy/Medium/Hard)
-- **Estimated cooking time** calculation
-- **Servings adjustment** with +/- controls
-- **AI analysis metadata** display
-- **Enhanced sharing** with social media integration
+### 🔧 Features
 
-#### 🔄 **Advanced Interactions**
-- **Copy recipe** to clipboard with confirmation
-- **Share recipes** via native sharing or social media
-- **Recipe comparison** and rating system
+- **`suggest_dish(ingredients, mood, weather, style)`**: Generates a recipe based on fridge contents, mood, and weather conditions
+- **Eliza AI Agent**: Intelligent context analysis and enhanced prompt engineering
+- **Multiple Cooking Styles**: Shakespearean drama, Gordon Ramsay's fiery sarcasm, or 5-year-old whimsy
+- **Mood-Based Cooking**: Recipes adapt to your emotional state (happy, tired, sad, excited, stressed)
+- **Weather-Aware Recipes**: Cooking suggestions based on weather conditions (sunny, rainy, cloudy, snowy, windy)
+- **Fun and Colorful UI**: Animated floating food, emoji inputs, and confetti when a dish is revealed
+- **Recipe History**: Save and manage your favorite recipes
+- **Step-by-Step Cooking Guide**: Interactive cooking instructions
+- **Nutrition Information**: Calorie estimation and macronutrient breakdown
+
+### ⚙️ Tech Stack
+
+- **Frontend**: React 18, TailwindCSS, Framer Motion
+- **Backend**: Node.js with Express (ElizaOS MCP Agent)
+- **AI Model**: LLaMA3-70B via Comput3
+- **Protocol**: MCP (Model Context Protocol) with JSON-RPC 2.0
+- **Deployment**: Vercel (Frontend), Render (Backend)
+- **Database**: LocalStorage (stateless)
+
+## 🚀 Installation Steps
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Comput3 API key
+
+### Local Development
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/snackgpt-team/snackgpt.git
+cd snackgpt
+```
+
+2. **Install dependencies**
+```bash
+npm run install-all
+```
+
+3. **Configure environment variables**
+```bash
+# Copy environment template
+cp server/env.example server/.env
+
+# Edit server/.env and add your Comput3 API key
+OPENAI_API_KEY=your_comput3_api_key_here
+OPENAI_API_URL=https://api.comput3.ai/v1
+PORT=3001
+NODE_ENV=development
+CORS_ORIGIN=http://localhost:3000
+```
+
+4. **Start the application**
+```bash
+npm run dev
+```
+
+5. **Open in browser**
+- Frontend: http://localhost:3000
+- Backend MCP: http://localhost:3001/mcp
+- Health Check: http://localhost:3001/health
+
+## 🌐 Production Deployment
+
+### Backend (Render)
+- **URL**: https://snackgpt-mcp-server.onrender.com
+- **MCP Endpoint**: https://snackgpt-mcp-server.onrender.com/mcp
+- **Health Check**: https://snackgpt-mcp-server.onrender.com/health
+
+### Frontend (Vercel)
+- **URL**: https://snackgpt.vercel.app
+
+## 🔧 Environment Variables
+
+### Required Environment Variables
+```bash
+# Comput3 API Configuration
+OPENAI_API_KEY=your_comput3_api_key_here
+OPENAI_API_URL=https://api.comput3.ai/v1
+
+# Server Configuration
+PORT=3001
+NODE_ENV=development
+
+# CORS Configuration
+CORS_ORIGIN=http://localhost:3000
+
+# MCP Configuration
+MCP_VERSION=2024-11-05
+MCP_SERVER_NAME=snackgpt
+MCP_SERVER_VERSION=1.0.0
+
+# Security Configuration
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+
+# Logging Configuration
+LOG_LEVEL=info
+LOG_FORMAT=combined
+
+# Health Check Configuration
+HEALTH_CHECK_ENABLED=true
+```
+
+## 🎮 Usage Examples
+
+### Basic Recipe Generation
+1. **Enter ingredients** in the text area (e.g., "banana, pasta, eggs, cheese")
+2. **Select your mood** (happy, tired, sad, excited, stressed)
+3. **Choose weather** (sunny, rainy, cloudy, snowy, windy)
+4. **Pick cooking style** (Shakespeare, Gordon Ramsay, 5-year-old)
+5. **Generate recipe** and enjoy!
+
+### MCP Protocol Usage
+
+#### Initialize MCP Connection
+```bash
+curl -X POST https://snackgpt-mcp-server.onrender.com/mcp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "initialize",
+    "params": {
+      "protocolVersion": "2024-11-05",
+      "capabilities": {},
+      "clientInfo": {
+        "name": "test-client",
+        "version": "1.0.0"
+      }
+    }
+  }'
+```
+
+#### Generate a Recipe
+```bash
+curl -X POST https://snackgpt-mcp-server.onrender.com/mcp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "$/invoke",
+    "params": {
+      "name": "suggest_dish",
+      "arguments": {
+        "ingredients": ["chicken", "rice", "tomato"],
+        "mood": "happy",
+        "weather": "sunny",
+        "style": "shakespeare"
+      }
+    }
+  }'
+```
+
+### Example Recipe Output
+```json
+{
+  "dish_name": "Merry Sunshine Chicken Delight",
+  "ingredients": ["chicken", "rice", "tomato", "olive oil", "herbs", "garlic"],
+  "instructions": "Step 1. Thou shalt begin by seasoning the chicken with herbs and garlic, verily, to taste.\nStep 2. In a pan, heat olive oil over medium heat, then add the chicken and cook until golden brown.\nStep 3. Add rice and tomatoes to the pan, stirring gently that all ingredients doth mingle.\nStep 4. Cover and simmer until rice is tender and chicken is cooked through.\nStep 5. Serve hot and enjoy this merry feast!",
+  "style_description": "O, fair cook, this dish doth bring joy to the heart and warmth to the soul! The golden chicken, the fluffy rice, and the sweet tomatoes create a symphony of flavors that shall delight thy senses on this sunny day!",
+  "eliza_enhanced": true,
+  "context_analysis": {
+    "mood_adapted": "happy",
+    "weather_considered": "sunny",
+    "style_applied": "shakespeare"
+  }
+}
+```
+
+## 🐛 Known Issues
+
+### Current Issues
+1. **ESLint Warnings**: Some unused imports in App.js (non-critical)
+2. **Favicon 404**: Missing favicon.ico causing 404 errors in browser console
+3. **Manifest 404**: Missing manifest.json causing 404 errors in browser console
+4. **Voice Commands**: Feature has been removed as requested
+
+### Limitations
+1. **API Rate Limits**: Comput3 API has rate limits that may affect high-volume usage
+2. **Ingredient Recognition**: Limited to common ingredients, may not recognize very specific or regional ingredients
+3. **Recipe Complexity**: Generated recipes are generally simple to moderate complexity
+4. **Language Support**: Currently only supports English
+
+### Future Improvements
+1. **Multi-language Support**: Add support for multiple languages
+2. **Recipe Validation**: Implement recipe validation and safety checks
+3. **User Accounts**: Add user authentication and recipe saving
+4. **Recipe Sharing**: Social media integration for recipe sharing
+5. **Voice Integration**: Re-implement voice commands with better UX
 
 ## 🏗️ Architecture
 
@@ -62,7 +223,7 @@ client/
 │   ├── components/
 │   │   ├── RecipeForm.js          # Main form component
 │   │   ├── RecipeCard.js          # Enhanced recipe display
-│   │   ├── CookingTimer.js        # Step-by-step cooking timer
+│   │   ├── CookingSteps.js        # Step-by-step cooking guide
 │   │   ├── NutritionInfo.js       # Nutritional analysis
 │   │   ├── RecipeHistory.js       # Recipe history & favorites
 │   │   ├── LoadingSpinner.js      # Animated loading
@@ -87,212 +248,123 @@ server/
 │       └── errorHandler.js        # Error handling
 ```
 
-## 🚀 Quick Start
+## 🔒 Security Features
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-- Comput3 API key
+- **Rate Limiting** - 100 requests per 15 minutes per IP
+- **HTTPS** - Secure communication with valid SSL certificates
+- **CORS** - Configurable CORS with secure defaults
+- **Helmet** - Security headers enabled
+- **Input Validation** - Comprehensive validation using Joi
+- **Error Handling** - Graceful error handling with proper JSON-RPC responses
 
-### Installation
+## 📊 Monitoring & Health
 
-1. **Clone the repository**
+### Health Check Endpoint
 ```bash
-git clone https://github.com/your-username/snackgpt.git
-cd snackgpt
+curl https://snackgpt-mcp-server.onrender.com/health
 ```
 
-2. **Install dependencies**
-```bash
-npm run install-all
-```
-
-3. **Configure environment**
-```bash
-# Copy environment template
-cp server/env.example server/.env
-
-# Edit server/.env and add your Comput3 API key
-OPENAI_API_KEY=your_comput3_api_key_here
-```
-
-4. **Start the application**
-```bash
-npm run dev
-```
-
-5. **Open in browser**
-- Frontend: http://localhost:3000
-- Backend MCP: http://localhost:3001/mcp
-
-## 🎮 Usage
-
-### Basic Recipe Generation
-1. **Enter ingredients** in the text area
-2. **Select your mood** (happy, tired, sad, excited, stressed)
-3. **Choose weather** (sunny, rainy, cloudy, snowy, windy)
-4. **Pick cooking style** (Shakespeare, Gordon Ramsay, 5-year-old)
-5. **Generate recipe** and enjoy!
-
-### Cooking Timer
-- Click **"Cooking Timer"** on any recipe
-- Follow step-by-step instructions with automatic timing
-- Track progress with visual indicators
-- Skip steps or reset as needed
-
-### Recipe Management
-- **View history** using the floating book icon
-- **Favorite recipes** by clicking the heart icon
-- **Load previous recipes** from history
-- **Delete recipes** you no longer need
-
-## 🤖 Eliza AI Agent
-
-SnackGPT features a sophisticated **Eliza AI agent** that acts as an intelligent intermediary between the MCP server and Comput3 AI:
-
-### Agent Capabilities
-- **Context Analysis** - Analyzes mood, weather, and style preferences
-- **Prompt Engineering** - Creates context-aware prompts for better recipes
-- **Response Validation** - Ensures quality and completeness of AI responses
-- **Mood Analysis** - Processes emotional state for recipe adaptation
-- **Weather Adaptation** - Suggests weather-appropriate cooking methods
-
-### Agent Workflow
-1. **User Request** → MCP Server
-2. **MCP Server** → Eliza Agent
-3. **Eliza Agent** → Context Analysis (mood, weather, style)
-4. **Eliza Agent** → Enhanced Prompt Generation
-5. **Eliza Agent** → Comput3 AI (with optimized prompt)
-6. **Eliza Agent** → Response Validation & Enhancement
-7. **Eliza Agent** → MCP Server → User
-
-## 🔧 MCP Protocol
-
-SnackGPT implements the **Model Context Protocol (MCP)** for AI tool communication:
-
-### Endpoints
-- **POST /mcp** - MCP JSON-RPC 2.0 requests
-- **GET /mcp** - Server-Sent Events (SSE) for real-time communication
-- **GET /health** - Health check endpoint
-
-### Methods
-- **`initialize`** - Server capability advertisement
-- **`$/invoke`** - Tool execution (suggest_dish)
-- **`$/ping`** - Connection testing
-
-### Tool Schema
+Response:
 ```json
 {
-  "name": "suggest_dish",
-  "description": "Generates a creative dish based on user ingredients, mood, and weather using Eliza AI agent for context analysis and enhanced prompt engineering.",
-  "input_schema": {
-    "type": "object",
-    "properties": {
-      "ingredients": {
-        "type": "array",
-        "items": { "type": "string" },
-        "description": "List of available ingredients"
-      },
-      "mood": {
-        "type": "string",
-        "enum": ["happy", "tired", "sad", "excited", "stressed"],
-        "description": "User's current mood"
-      },
-      "weather": {
-        "type": "string",
-        "enum": ["sunny", "rainy", "cloudy", "snowy", "windy"],
-        "description": "Current weather conditions"
-      },
-      "style": {
-        "type": "string",
-        "enum": ["shakespeare", "gordon_ramsay", "five_year_old"],
-        "description": "Cooking style voice"
-      }
-    },
-    "required": ["ingredients"]
-  }
+  "status": "healthy",
+  "timestamp": "2024-01-07T14:35:37.000Z",
+  "service": "snackgpt-mcp-server",
+  "version": "1.0.0",
+  "uptime": 1234.567,
+  "environment": "production"
 }
 ```
 
-## 🎨 Design System
+## 🤖 Eliza AI Agent
 
-### Color Palette
-- **Mint** (`#4ade80`) - Primary actions, success states
-- **Pink** (`#ec4899`) - Secondary actions, highlights
-- **Lemon** (`#fbbf24`) - Accents, warnings
-- **Gray** (`#6b7280`) - Text, borders
+Eliza is an intelligent AI agent that enhances recipe generation by:
 
-### Typography
-- **Fredoka One** - Headings, titles
-- **Pacifico** - Decorative elements
-- **Inter** - Body text, UI elements
+- **Context Analysis** - Analyzes user mood, weather, and preferences
+- **Prompt Engineering** - Optimizes prompts for better AI responses
+- **Response Enhancement** - Post-processes AI responses for better quality
+- **Adaptive Learning** - Adapts to user preferences over time
 
-### Animations
-- **Framer Motion** - Smooth transitions and micro-interactions
-- **Custom keyframes** - Floating ingredients, cooking animations
-- **Hover effects** - Interactive feedback
-
-## 📊 Performance
-
-### Frontend
-- **React 18** with concurrent features
-- **Tailwind CSS** for optimized styling
-- **Framer Motion** for 60fps animations
-- **LocalStorage** for offline recipe storage
-
-### Backend
-- **Node.js** with Express.js
-- **JSON-RPC 2.0** for efficient communication
-- **Eliza AI agent** for intelligent processing
-- **Comput3 AI** integration for recipe generation
+### Eliza Capabilities
+- Recipe generation optimization
+- Context-aware prompt engineering
+- Mood and weather adaptation
+- Style voice application
+- Response quality enhancement
 
 ## 🚀 Deployment
 
-### Frontend (Vercel)
+### Frontend Deployment (Vercel)
+1. **Build the frontend:**
 ```bash
+cd client
 npm run build
+```
+
+2. **Deploy to Vercel:**
+```bash
 vercel --prod
 ```
 
-### Backend (Railway/Render)
-```bash
-# Set environment variables
-OPENAI_API_KEY=your_key
-PORT=3001
-NODE_ENV=production
+### Backend Deployment (Render)
+1. **Connect GitHub repository to Render**
+2. **Create new Web Service**
+3. **Configure environment variables:**
+   - `OPENAI_API_KEY` - Your Comput3 API key
+   - `NODE_ENV` - production
+   - `CORS_ORIGIN` - Your frontend URL
 
-# Deploy
-railway up
+## 📝 API Documentation
+
+### MCP Endpoints
+
+#### POST /mcp
+Main MCP protocol endpoint supporting JSON-RPC 2.0.
+
+**Methods:**
+- `initialize` - Initialize MCP connection
+- `$/invoke` - Invoke tools (suggest_dish)
+- `$/ping` - Health check
+
+#### GET /mcp
+SSE endpoint for real-time communication.
+
+#### GET /health
+Health check endpoint for monitoring.
+
+## 🔧 Development
+
+### Running Tests
+```bash
+cd server
+npm test
 ```
+
+### Linting
+```bash
+cd server
+npm run lint
+```
+
+### Environment Variables
+See `server/env.example` for all available configuration options.
+
+## 📄 License
+
+MIT License - see LICENSE file for details.
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Aya MCP Hackathon** - For the amazing opportunity
-- **Eliza AI Agent** - Intelligent recipe enhancement
-- **Comput3 AI** - Powerful recipe generation
-- **Framer Motion** - Beautiful animations
-- **Tailwind CSS** - Utility-first styling
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## 📞 Support
 
-- **Email**: snackgpt@example.com
-- **GitHub**: [Issues](https://github.com/your-username/snackgpt/issues)
-- **Documentation**: [Wiki](https://github.com/your-username/snackgpt/wiki)
+- **Email**: kiranmurthynivas29@gmail.com
 
 ---
 
-**Made with ❤️ for the Aya MCP Hackathon**
-
-*Powered by Eliza AI Agent & Comput3 AI*
+**Made with ❤️ for the MCP Hackathon by Team delta**
